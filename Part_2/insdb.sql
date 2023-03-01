@@ -2,11 +2,11 @@
 
 --Administrator
 INSERT INTO Administrator (empID, name, gender)
-            VALUES (1, "Alex Garden", 'M')
-                   (2, "ALDEN TRINITY", 'F'),
-                   (3, "RANDALL URSULA", 'M'),
-                   (4, "OAKLEY BENNETT", 'M'),
-                   (5, "CURTIS CAMERON", 'M');
+            VALUES (1, "Alex", 'M')
+                   (2, "ALDEN", 'F'),
+                   (3, "Randall", 'M'),
+                   (4, "Oakley", 'M'),
+                   (5, "Curtis", 'M');
 
 --Client
 INSERT INTO Client (clientID, name, phone, address)
