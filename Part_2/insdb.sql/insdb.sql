@@ -244,8 +244,8 @@ INSERT INTO Broadcasts(videoCode, siteCode)
                     
 -- Table: DigitalDisplay
 INSERT INTO DigitalDisplay(serialNo, schedularSystem, modelNo)
-             VALUES (1, Sys1, 1),
-                    (2, Sys2, 2),
+             VALUES ('1', 'Sys1', '1'),
+                    ('2', 'Sys2', '2'),
                     (3, Sys3, 3),
                     (4, Sys4, 4),
                     (5, Sys5, 5);
