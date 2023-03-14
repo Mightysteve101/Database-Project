@@ -244,11 +244,11 @@ INSERT INTO Broadcasts(videoCode, siteCode)
                     
 -- Table: DigitalDisplay
 INSERT INTO DigitalDisplay(serialNo, schedularSystem, modelNo)
-             VALUES ('1', 'Sys1', '1'),
-                    ('2', 'Sys2', '2'),
-                    (3, Sys3, 3),
-                    (4, Sys4, 4),
-                    (5, Sys5, 5);
+             VALUES (1, Random, 1),
+                    (2, Smart, 2),
+                    (3, Virtue, 3),
+                    (4, Smart, 4),
+                    (5, Random, 5);
 
 
 --Purchases
@@ -263,6 +263,13 @@ INSERT INTO Purchases(clientID, empID, packageID, commissionRate)
 --Locates
 INSERT INTO Locates(serialNo, siteCode)
              VALUES (1, 1),
+                    (2, 2),
+                    (3, 3),
+                    (4, 4),
+                    (5, 5);
+
+INSERT INTO Specializes(empID, modelNO)
+             Values (1, 1),
                     (2, 2),
                     (3, 3),
                     (4, 4),
