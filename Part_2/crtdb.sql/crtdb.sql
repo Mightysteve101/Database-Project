@@ -6,6 +6,18 @@
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
+--Change empId to empID
+-- Table: AdmWorkHours
+CREATE TABLE IF NOT EXISTS AdmWorkHours (
+    empId INTEGER  REFERENCES Administrator (empID),
+    day   DATE,
+    hours NUMERIC (4, 2),
+    PRIMARY KEY (
+        empId,
+        day
+    )
+);
+
 -- Table: Administers
 CREATE TABLE IF NOT EXISTS Administers (
     empID    INTEGER REFERENCES Administrator (empID),
@@ -24,19 +36,7 @@ CREATE TABLE IF NOT EXISTS Administrator (
     gender CHAR (1) 
 );
 
-
--- Table: AdmWorkHours
-CREATE TABLE IF NOT EXISTS AdmWorkHours (
-    empId INTEGER  REFERENCES Administrator (empID),
-    day   DATE,
-    hours NUMERIC (4, 2),
-    PRIMARY KEY (
-        empId,
-        day
-    )
-);
-
-
+--change starDate to startDate
 -- Table: AirtimePackage
 CREATE TABLE IF NOT EXISTS AirtimePackage (
     packageID INTEGER      PRIMARY KEY,
@@ -47,6 +47,15 @@ CREATE TABLE IF NOT EXISTS AirtimePackage (
     videoCode INTEGER
 );
 
+/**
+CREATE TABLE AirtimePackage (
+    packageID INTEGER PRIMARY KEY, 
+    class VARCHAR (16), 
+    starDate DATE, 
+    lastDate DATE, 
+    frequency INTEGER, 
+    videoCode INTEGER, CHECK (class = 'Economy' OR class = 'Whole Day' OR class = 'Golden Hours'))
+**/
 
 -- Table: Broadcasts
 CREATE TABLE IF NOT EXISTS Broadcasts (
@@ -75,6 +84,12 @@ CREATE TABLE IF NOT EXISTS DigitalDisplay (
     modelNo         CHAR (10) REFERENCES Model (modelNo) 
 );
 
+/**
+CREATE TABLE DigitalDisplay (
+    serialNo CHAR (10) PRIMARY KEY, 
+    schedularSystem CHAR (10) CHECK ('Random' OR 'Smart' OR 'Virtue'), 
+    modelNo CHAR (10) REFERENCES Model (modelNo))
+**/
 
 -- Table: Locates
 CREATE TABLE IF NOT EXISTS Locates (
@@ -100,7 +115,7 @@ CREATE TABLE IF NOT EXISTS Model (
 
 -- Table: Purchases
 CREATE TABLE IF NOT EXISTS Purchases (
-    clientID      INTEGER        REFERENCES Purchases (clientID),
+    clientID      INTEGER        REFERENCES Client (clientID),
     empID         INTEGER        REFERENCES Salesman (empID),
     packageID     INTEGER        REFERENCES AirtimePackage (packageID),
     commissionRate NUMERIC (4, 2),
@@ -128,7 +143,15 @@ CREATE TABLE IF NOT EXISTS Site (
     phone    VARCHAR (16) 
 );
 
+/**
+CREATE TABLE Site (
+    siteCode INTEGER PRIMARY KEY, 
+    type VARCHAR (16), 
+    address VARCHAR (100), 
+    phone VARCHAR (16), CHECK (type = 'bar' OR type = 'restaurant'))
+**/
 
+--change modelNO to modelNo
 -- Table: Specializes
 CREATE TABLE IF NOT EXISTS Specializes (
     empID   INTEGER   REFERENCES TechnicalSupport (empID),
