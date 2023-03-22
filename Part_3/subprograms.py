@@ -1,5 +1,5 @@
 import sqlite3
-con = sqlite3.connect("ABC.sqlite")
+con = sqlite3.connect("example.sqlite")
 
 cur = con.cursor()
 
