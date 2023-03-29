@@ -5,6 +5,8 @@ import sys
 sys.builtin_module_names
 
 def create_connection(db_file):
+
+    """Create a database connection to the SQLite database"""
    
     conn = None
     try:
@@ -15,7 +17,7 @@ def create_connection(db_file):
     except Error as e:
         print(e)
     return conn
-    
+
 
 if __name__ == '__main__':
     create_connection(r"ABC.sqlite")
@@ -26,6 +28,8 @@ if __name__ == '__main__':
 def close_connection(conn):
      conn.close
      print("The connection with the database has been closed. ")
+
+
 
 """
 insert: define functions here
@@ -73,6 +77,39 @@ def select_questionThree(conn):
     """
 
 
+
+def select_question_Four(conn, phone):
+    """
+    Query phone from Client table
+    :param conn: The connection object
+    :param phone:
+    :return:
+    """
+
+    cur = conn.cursor()
+    cur.execute("SELECT phone FROM Client WHERE phone =?", (phone,))
+    
+    rows = cur.fetchall()
+
+    for rows in rows:
+        print(rows)
+
+def select_AdmWorkHours_by_priority(conn, day):
+    """
+    Query tasks by priority
+    :param conn: the connection object
+    :param day
+    :return:
+    """
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM AdmWorkHours WHERE day=?", (day,))
+
+    rows = cur.fetchall()
+
+    for row in rows:
+        print(row)
+
+
 def main():
     database = (r"ABC.sqlite")
     conn= create_connection(database)
@@ -83,15 +120,18 @@ def main():
     print("Connection with database has been established")
   
     with conn:
+
+        print("4.) Query selected phone numbers")
+        select_question_Four(conn, -5539)
+
+
+        """
         while( len(sys.argv) > 3):
             s1, s2 = sys.argv[1], sys.argv[2]
+        """
 
-            """
-            Insert call statements here
-            """
+
 
 
 if __name__ == '__main__':
     main()
-    
-
