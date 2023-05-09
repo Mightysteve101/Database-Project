@@ -102,7 +102,7 @@ def select_option_three(conn):
             print(row)
 
     else:
-        print("Empty table")
+        print("This is Empty table")
 
 # Ask how to handle DigitalDisplays that have Specializes records that reference it
 def select_option_four(conn):
